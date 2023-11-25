@@ -77,6 +77,7 @@ class CurrencyConverterWindow(QWidget):
                                  'Австралийский доллар (AUD)',
                                  'Швейцарский франк (CHF)',
                                  'Индийская рупия (INR)']
+
         to_currency_options = ['Доллар США (USD)',
                                  'Евро (EUR)',
                                  'Японская иена (JPY)',
@@ -224,7 +225,7 @@ class RegistrationWindow(QWidget):
             if res > 0:
                 message_box = QMessageBox()
                 message_box.setWindowTitle("Информация")
-                message_box.setText(f"Ваш уникальный идентификатор: {res}.")
+                message_box.setText(f"Ваш логин: {res}.")
                 message_box.addButton(QMessageBox.Ok)
                 message_box.exec()
 
@@ -248,7 +249,7 @@ class AuthorizationWindow(QWidget):
 
         self.error_flag = True
 
-        self.user_id_label = QLabel("Ваш ID:")
+        self.user_id_label = QLabel("Логин:")
         self.user_id_input = QLineEdit()
 
         self.password_label = QLabel("Пароль:")

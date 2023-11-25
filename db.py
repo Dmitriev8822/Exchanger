@@ -63,7 +63,7 @@ class DataBase:
     def new_log(self, staff_id, currency_in, currency_out, amount, date, time):
         try:
             self.cursor.execute('''
-                INSERT INTO operations (staff_id, currency_in, currency_out, amount, time) VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO operations (staff_id, currency_in, currency_out, amount, date, time) VALUES (?, ?, ?, ?, ?, ?)
             ''', (staff_id, currency_in, currency_out, amount, date, time))
             self.conn.commit()
             return 0  # all successfully
