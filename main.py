@@ -16,7 +16,7 @@ unicode_dict = {
     "CAD": "\u0024",  # Канадский доллар
     "AUD": "\u0024",  # Австралийский доллар
     "CHF": "\u20A3",  # Швейцарский франк
-    "INR": "\u20B9"   # Индийская рупия
+    "INR": "\u20B9"  # Индийская рупия
 }
 
 currency_dict = {
@@ -36,11 +36,8 @@ currency_dict = {
 class CurrencyConverterWindow(QWidget):
     def __init__(self, user_id):
         super().__init__()
-        self.init_ui()
         self.active_user_id = user_id
-        self.convert_button.clicked.connect(self.convert)
 
-    def init_ui(self):
         self.setWindowTitle('Конвертер валют')
         self.resize(600, 300)
 
@@ -79,15 +76,15 @@ class CurrencyConverterWindow(QWidget):
                                  'Индийская рупия (INR)']
 
         to_currency_options = ['Доллар США (USD)',
-                                 'Евро (EUR)',
-                                 'Японская иена (JPY)',
-                                 'Британский фунт (GBP)',
-                                 'Китайский юань/ренминби (CNY)',
-                                 'Российский рубль (RUB)',
-                                 'Канадский доллар (CAD)',
-                                 'Австралийский доллар (AUD)',
-                                 'Швейцарский франк (CHF)',
-                                 'Индийская рупия (INR)']
+                               'Евро (EUR)',
+                               'Японская иена (JPY)',
+                               'Британский фунт (GBP)',
+                               'Китайский юань/ренминби (CNY)',
+                               'Российский рубль (RUB)',
+                               'Канадский доллар (CAD)',
+                               'Австралийский доллар (AUD)',
+                               'Швейцарский франк (CHF)',
+                               'Индийская рупия (INR)']
 
         self.from_currency_combo.addItems(from_currency_options)
         self.to_currency_combo.addItems(to_currency_options)
@@ -107,6 +104,9 @@ class CurrencyConverterWindow(QWidget):
 
         self.setLayout(layout)
 
+
+        self.convert_button.clicked.connect(self.convert)
+
     def convert(self):
         amount = self.amount_edit.text()
         from_currency = currency_dict[self.from_currency_combo.currentText()]
@@ -125,13 +125,13 @@ class CurrencyConverterWindow(QWidget):
                 break
 
             profit = 1
-            res = str(round(amount * (rate + rate * (profit / 100))))
+            res = str(round(amount * (rate - rate * (profit / 100))))
             formatted_number = "{0:,}".format(int(res)).replace(',', '.')
             self.result_label.setText(
                 f'{formatted_number}{unicode_dict[to_currency]}; Курс актуален на {str(date).split()[0]}.')
 
-            db.new_log(self.active_user_id, from_currency, to_currency, amount, str(date).split()[0], str(date).split()[1].split('.')[0])
-
+            db.new_log(self.active_user_id, from_currency, to_currency, amount, str(date).split()[0],
+                       str(date).split()[1].split('.')[0])
 
 
 class RegistrationWindow(QWidget):
