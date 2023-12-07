@@ -104,6 +104,10 @@ class CurrencyConverterWindow(QWidget):
 
         self.setLayout(layout)
 
+        self.setStyleSheet(
+            "QPushButton {background-color: #1f6ea5; color: #ffffff; padding: 10px;}"
+            "QPushButton:hover {background-color: #288fd7;}"
+        )
 
         self.convert_button.clicked.connect(self.convert)
 
@@ -196,8 +200,8 @@ class RegistrationWindow(QWidget):
             "QWidget {background-color: #f0f0f0;}"
             "QLabel {color: #000000;}"
             "QLineEdit {background-color: #ffffff; color: #000000; border: 1px solid #000000; padding: 5px;}"
-            "QPushButton {background-color: #ff6347; color: #ffffff; padding: 10px;}"
-            "QPushButton:hover {background-color: #ff7f50;}"
+            "QPushButton {background-color: #1f6ea5; color: #ffffff; padding: 10px;}"
+            "QPushButton:hover {background-color: #288fd7;}"
         )
 
         self.setLayout(self.layout)
@@ -302,8 +306,8 @@ class AuthorizationWindow(QWidget):
             "QWidget {background-color: #f0f0f0;}"
             "QLabel {color: #000000;}"
             "QLineEdit {background-color: #ffffff; color: #000000; border: 1px solid #000000; padding: 5px;}"
-            "QPushButton {background-color: #ff6347; color: #ffffff; padding: 10px;}"
-            "QPushButton:hover {background-color: #ff7f50;}"
+            "QPushButton {background-color: #1f6ea5; color: #ffffff; padding: 10px;}"
+            "QPushButton:hover {background-color: #288fd7;}"
         )
 
         self.setLayout(self.layout)
